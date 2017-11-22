@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningSystem", "LearningSystem\LearningSystem.csproj", "{0A664468-A0FF-441C-A115-537E3851CB7C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LearningSystem.Data", "LearningSystem.Data\LearningSystem.Data.csproj", "{B0E089A5-316B-4AE3-95C0-413F2A9BDD0F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{0A664468-A0FF-441C-A115-537E3851CB7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0A664468-A0FF-441C-A115-537E3851CB7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0A664468-A0FF-441C-A115-537E3851CB7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B0E089A5-316B-4AE3-95C0-413F2A9BDD0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0E089A5-316B-4AE3-95C0-413F2A9BDD0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0E089A5-316B-4AE3-95C0-413F2A9BDD0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0E089A5-316B-4AE3-95C0-413F2A9BDD0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
