@@ -8,9 +8,7 @@ namespace LearningSystem.Models.AccountViewModels
 {
     public class LoginViewModel
     {
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
+      
 
         [Required]
         [DataType(DataType.Password)]
@@ -18,5 +16,8 @@ namespace LearningSystem.Models.AccountViewModels
 
         [Display(Name = "Remember me?")]
         public bool RememberMe { get; set; }
+
+        [Required]
+        public string Username { get; set; }
     }
 }

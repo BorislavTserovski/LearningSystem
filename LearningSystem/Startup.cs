@@ -26,12 +26,19 @@ namespace LearningSystem
             services.AddDbContext<LearningSystemDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<User, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>(options=>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireLowercase = false;
+                options.Password.RequireUppercase = false;
+                options.Password.RequireNonAlphanumeric = false;
+            })
                 .AddEntityFrameworkStores<LearningSystemDbContext>()
                 .AddDefaultTokenProviders();
 
             services.AddAutoMapper();
-           
+
+            services.AddDomainServices();
 
             services.AddMvc();
         }
@@ -57,6 +64,11 @@ namespace LearningSystem
 
             app.UseMvc(routes =>
             {
+                routes.MapRoute(
+            name: "areas",
+            template: "{area:exists}/{controller=Home}/{action=Index}/{id?}" );
+
+
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");

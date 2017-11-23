@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using LearningSystem.Common.Mapping;
 namespace LearningSystem.Infrastructure.Mapping
 {
     public class AutoMapperProfile : Profile
