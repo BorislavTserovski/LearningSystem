@@ -2,11 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LearningSystem.Services.Admin.Contracts
 {
    public interface IAdminUserService
     {
-        IEnumerable<AdminListingServiceModel> All();
+       Task<IEnumerable<AdminListingServiceModel>> AllAsync();
     }
 }

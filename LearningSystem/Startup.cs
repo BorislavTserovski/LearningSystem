@@ -8,6 +8,7 @@ using LearningSystem.Data;
 using LearningSystem.Data.Models;
 using LearningSystem.Infrastructure.Extensions;
 using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 
 namespace LearningSystem
 {
@@ -40,7 +41,10 @@ namespace LearningSystem
 
             services.AddDomainServices();
 
-            services.AddMvc();
+            services.AddMvc(options=>
+            {
+                options.Filters.Add<AutoValidateAntiforgeryTokenAttribute>();
+            });
         }
 
         

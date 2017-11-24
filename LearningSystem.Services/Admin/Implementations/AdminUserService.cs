@@ -6,6 +6,8 @@ using LearningSystem.Services.Admin.Contracts;
 using LearningSystem.Data;
 using System.Linq;
 using AutoMapper.QueryableExtensions;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace LearningSystem.Services.Admin.Implementations
 {
@@ -18,10 +20,10 @@ namespace LearningSystem.Services.Admin.Implementations
             this.db = db;
         }
 
-        public IEnumerable<AdminListingServiceModel> All()
-        => this.db
+        public async Task<IEnumerable<AdminListingServiceModel>> AllAsync()
+        =>  await this.db
             .Users
             .ProjectTo<AdminListingServiceModel>()
-            .ToList();
+            .ToListAsync();
     }
 }
