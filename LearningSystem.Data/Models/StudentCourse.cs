@@ -14,5 +14,7 @@ namespace LearningSystem.Data.Models
         public string StudentId { get; set; }
 
         public User Student{ get; set; }
+
+        public Grade? Grade { get; set; }
     }
 }

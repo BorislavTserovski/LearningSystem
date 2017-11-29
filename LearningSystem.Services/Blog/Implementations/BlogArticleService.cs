@@ -4,6 +4,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using LearningSystem.Services.Blog.Models;
+using System.Linq;
+using AutoMapper.QueryableExtensions;
+using Microsoft.EntityFrameworkCore;
 
 namespace LearningSystem.Services.Blog.Implementations
 {
@@ -16,7 +20,21 @@ namespace LearningSystem.Services.Blog.Implementations
             this.db = db;
         }
 
-        public async Task Create(string title, string content, string authorId)
+        public async Task<IEnumerable<BlogArticleListingServiceModel>> AllAsync(int page = 1)
+        => await this.db.Articles
+            .OrderByDescending(a => a.PublishDate)
+            .Skip((page-1) * ServiceConstants.BlogArticlePageSize)
+            .Take(ServiceConstants.BlogArticlePageSize)
+            .ProjectTo<BlogArticleListingServiceModel>()
+            .ToListAsync();
+
+        public async Task<BlogArticleDetailsServiceModel> ById(int id)
+       => await this.db.Articles
+            .Where(a => a.Id == id)
+            .ProjectTo<BlogArticleDetailsServiceModel>()
+            .FirstOrDefaultAsync();
+
+        public async Task CreateAsync(string title, string content, string authorId)
         {
             var article = new Article
             {
@@ -30,5 +48,10 @@ namespace LearningSystem.Services.Blog.Implementations
 
             await this.db.SaveChangesAsync();
         }
+
+        public async Task<int> TotalAsync()
+        => await this.db.Articles.CountAsync();
+
+
     }
 }

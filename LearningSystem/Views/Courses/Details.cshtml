@@ -1,0 +1,46 @@
+﻿@model CourseDetailsViewModel
+@{
+    ViewData["Title"] = $"{Model.Course.Name} Course";
+}
+
+<h2>@ViewData["Title"] - @Model.Course.Students students enrolled.</h2>
+
+<h3>
+    @Model.Course.StartDate.ToShortDateString() - @Model.Course.EndDate.ToShortDateString()
+</h3>
+
+<h3>
+    @Model.Course.Description
+</h3>
+
+<h4>@Model.Course.Trainer</h4>
+
+@if (User.Identity.IsAuthenticated)
+{
+    if (Model.Course.StartDate>DateTime.UtcNow)
+    {
+        if (Model.UserIsSignedInCourse)
+        {
+            <form asp-action="SignOut" asp-route-id="@Model.Course.Id" method="post">
+                <input type="submit" class="btn btn-primary" value="Sign out" />
+            </form>
+            
+        }
+        else
+        {
+            <form asp-action="SignIn" asp-route-id="@Model.Course.Id" method="post">
+               
+                <input type="submit" class="btn btn-primary" value="Sign in"/>
+            </form>
+           
+        }
+    }
+    else
+    {
+        <span>This Course has already started.</span>
+    }
+}
+else
+{
+	 <span>To sign for this course, please <a asp-controller="Account" asp-action="Login" asp-route-returnUrl="@Context.Request.Path">login</a> into your account.</span>        
+}
